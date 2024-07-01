@@ -25,8 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
 # Application definition
 
@@ -82,18 +81,21 @@ WSGI_APPLICATION = 'shoppinglyx.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'PASSWORD': 'Gulgul@4088',
-        'HOST': 'localhost',  # Or your database host
-        'PORT': '5432',       # Or your database port
-    }
-}
-database_url=os.environ.get("DATABASE_URL")
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'test',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Gulgul@4088',
+#         'HOST': 'localhost',  # Or your database host
+#         'PORT': '5432',       # Or your database port
+#     }
+# }
+# database_url=os.environ.get("DATABASE_URL")
 
+DATABASES ={
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation
