@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'shoppinglyx.wsgi.application'
 # database_url=os.environ.get("DATABASE_URL")
 
 DATABASES ={
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL", ""))
+    "default": dj_database_url.parse('postgresql://test_kejw_user:kFTQEK7wIiaewWy0Y0RiUEc92XIh8o0a@dpg-cq1ej3tds78s73ahtv7g-a.oregon-postgres.render.com/test_kejw')
 }
 
 
